@@ -7,7 +7,7 @@ namespace ConsoleFoundation
     {
         private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
 
-        public static void Console(string msg, LogLevel logLevel = null)
+        public static void WriteLine(string msg, LogLevel logLevel = null)
         {
             if (logLevel == null)
             {
@@ -33,16 +33,16 @@ namespace ConsoleFoundation
                 System.Console.ForegroundColor = ConsoleColor.Yellow;
             }
 
-            System.Console.WriteLine($"{DateTime.Now:yyyy/MM/dd hh:mm:ss}:{msg}");
+            System.Console.WriteLine($"{DateTime.Now:yyyy/MM/dd hh:mm:ss}: {msg}");
             System.Console.ForegroundColor = defaultColor;
         }
 
-        public static void Console(Exception exception)
+        public static void WriteLine(Exception exception)
         {
             var defaultColor = System.Console.ForegroundColor;
 
             System.Console.ForegroundColor = ConsoleColor.Red;
-            System.Console.WriteLine($"{DateTime.Now:yyyy/MM/dd hh:mm:ss}:{exception}");
+            System.Console.WriteLine($"{DateTime.Now:yyyy/MM/dd hh:mm:ss}: {exception}");
 
             Logger.Error(exception);
 
